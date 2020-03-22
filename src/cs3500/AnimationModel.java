@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import cs3500.animator.util.AnimationBuilder;
 import cs3500.elements.Ellipse;
 import cs3500.elements.Rectangle;
 import cs3500.operations.Operation;
@@ -235,6 +236,34 @@ public class AnimationModel implements IAnimation {
       return elements.get(id);
     } catch (NullPointerException npe) {
       throw new IllegalArgumentException("Element does not exist");
+    }
+  }
+
+  public static final class Builder implements AnimationBuilder<IAnimation> {
+
+    @Override
+    public IAnimation build() {
+      return null;
+    }
+
+    @Override
+    public AnimationBuilder<IAnimation> setBounds(int x, int y, int width, int height) {
+      return null;
+    }
+
+    @Override
+    public AnimationBuilder<IAnimation> declareShape(String name, String type) {
+      return null;
+    }
+
+    @Override
+    public AnimationBuilder<IAnimation> addMotion(String name, int t1, int x1, int y1, int w1, int h1, int r1, int g1, int b1, int t2, int x2, int y2, int w2, int h2, int r2, int g2, int b2) {
+      return null;
+    }
+
+    @Override
+    public AnimationBuilder<IAnimation> addKeyframe(String name, int t, int x, int y, int w, int h, int r, int g, int b) {
+      return null;
     }
   }
 }
