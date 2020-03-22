@@ -52,7 +52,7 @@ public class AnimationModel implements IAnimation {
 
     this.checkNotNull();
 
-    int tickDiff = t2 - t1;
+    double tickDiff = t2 - t1;
     double dx = (x2 - x1) / tickDiff;
     double dy = (y2 - y1) / tickDiff;
     double dw = (w2 - w1) / tickDiff;
@@ -62,16 +62,20 @@ public class AnimationModel implements IAnimation {
     double db = (b2 - b1) / tickDiff;
 
     if (!elements.containsKey(name)) {
-      switch (declaredShapes.get(name)) {
-        case "rectangle":
-          elements.put(name, new Rectangle(name, new Color(r1, g1, b1), new Posn(x1, y1), h1, w1));
-          break;
-        case "ellipse":
-          elements.put(name, new Ellipse(name, new Color(r1, g1, b1), new Posn(x1, y1), h1, w1));
-          break;
-        default:
-          throw new IllegalArgumentException("This type of shape doesn't exist: "
-                  + declaredShapes.get(name));
+      try {
+        switch (declaredShapes.get(name)) {
+          case "rectangle":
+            elements.put(name, new Rectangle(name, new Color(r1, g1, b1), new Posn(x1, y1), h1, w1));
+            break;
+          case "ellipse":
+            elements.put(name, new Ellipse(name, new Color(r1, g1, b1), new Posn(x1, y1), h1, w1));
+            break;
+          default:
+            throw new IllegalArgumentException("This type of shape doesn't exist: "
+                    + declaredShapes.get(name));
+        }
+      } catch (NullPointerException npe) {
+        throw new IllegalArgumentException("Element id doesn't exist");
       }
     }
 
@@ -122,16 +126,6 @@ public class AnimationModel implements IAnimation {
     }
     if (operations == null) {
       throw new IllegalStateException("Error: Operations is null");
-    }
-  }
-
-  /**
-   * Checks that the elements and operations fields are not null.
-   * @param id is the element id
-   */
-  private void checkIdExists(String id) {
-    if (!elements.containsKey(id)) {
-      throw new IllegalArgumentException("No element with that ID exists");
     }
   }
 
@@ -237,6 +231,10 @@ public class AnimationModel implements IAnimation {
 
   @Override
   public IElement getElement(String id) {
-    return elements.get(id);
+    try {
+      return elements.get(id);
+    } catch (NullPointerException npe) {
+      throw new IllegalArgumentException("Element does not exist");
+    }
   }
 }
