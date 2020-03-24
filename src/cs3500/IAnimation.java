@@ -16,7 +16,7 @@ import java.util.Map;
  * The model may be asked to return a frame given a number of ticks, and the model will perform
  * incremental translations of elements up to that point.
  */
-public interface IAnimation {
+public interface IAnimation extends ReadOnlyAnimation {
 
   /**
    * Converts a motion operation into individual motions per tick,
@@ -53,13 +53,6 @@ public interface IAnimation {
   void insertElement(String name, String type);
 
   /**
-   * Converts all the moves into textual descriptions of the entire
-   * animation. The motions are grouped by element.
-   * @return a textual description of the animation
-   */
-  String getVerboseAnimation();
-
-  /**
    * Executes the animations by running all the operations at the given ticks.
    */
   void executeOperations();
@@ -69,24 +62,4 @@ public interface IAnimation {
    * @param tick tick at which to stop executing
    */
   void executeOperationsUntil(int tick);
-
-  /**
-   * Gets an element with the given id.
-   * @param id id of element to return
-   * @return an element from the animation
-   */
-  IElement getElement(String id);
-
-  /**
-   * Gets a list of all the elements in the animation.
-   * @return a list of elements
-   */
-  Map<String, IElement> getElements();
-
-  /**
-   * Gets the list of motions associated with the given element.
-   * @param id specific id of the element
-   * @return a list of operations
-   */
-  List<String> getMotionsForElement(String id);
 }
