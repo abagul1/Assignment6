@@ -239,6 +239,16 @@ public class AnimationModel implements IAnimation {
     }
   }
 
+  @Override
+  public Map<String,IElement> getElements() {
+    return elements;
+  }
+
+  @Override
+  public List<String> getMotionsForElement(String id) {
+    return verboseOps.get(id);
+  }
+
   public static final class Builder implements AnimationBuilder<IAnimation> {
 
     @Override

@@ -1,6 +1,8 @@
 package cs3500;
 
 import java.awt.Color;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Interface for an Animation model within an M-V-C framework.
@@ -74,4 +76,17 @@ public interface IAnimation {
    * @return an element from the animation
    */
   IElement getElement(String id);
+
+  /**
+   * Gets a list of all the elements in the animation.
+   * @return a list of elements
+   */
+  Map<String, IElement> getElements();
+
+  /**
+   * Gets the list of motions associated with the given element.
+   * @param id specific id of the element
+   * @return a list of operations
+   */
+  List<String> getMotionsForElement(String id);
 }
