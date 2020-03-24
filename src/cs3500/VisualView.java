@@ -4,7 +4,10 @@ import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
 
-public class VisualView extends JFrame implements IView {
+/**
+ * Parent class for visual views and their respective decorator classes.
+ */
+public abstract class VisualView extends JFrame implements IView {
 
   public VisualView(ReadOnlyAnimation m) {
     super();
