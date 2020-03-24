@@ -3,6 +3,9 @@ package cs3500;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Provides an interface with read only methods.
+ */
 public interface ReadOnlyAnimation {
 
   /**

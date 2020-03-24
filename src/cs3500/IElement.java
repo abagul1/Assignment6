@@ -2,6 +2,8 @@ package cs3500;
 
 import java.awt.Color;
 
+import cs3500.elements.Posn;
+
 /**
  * Interface for an element.
  * An element is an entity that is capable of being represented visually.

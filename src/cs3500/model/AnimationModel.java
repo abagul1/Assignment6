@@ -1,4 +1,4 @@
-package cs3500;
+package cs3500.model;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -7,8 +7,12 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import cs3500.IAnimation;
+import cs3500.IElement;
+import cs3500.IOperation;
 import cs3500.animator.util.AnimationBuilder;
 import cs3500.elements.Ellipse;
+import cs3500.elements.Posn;
 import cs3500.elements.Rectangle;
 import cs3500.operations.Operation;
 
@@ -23,11 +27,11 @@ public class AnimationModel implements IAnimation {
   private Map<String, List<String>> verboseOps;
   private Map<String, String> declaredShapes;
 
-  int currentTick;
-  int ticksPerFrame;
+  private int currentTick;
+  private int ticksPerFrame;
 
-  int windowWidth;
-  int windowHeight;
+  private int windowWidth;
+  private int windowHeight;
 
   /**
    * Constructor for animation model.

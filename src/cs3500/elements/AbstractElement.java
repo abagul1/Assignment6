@@ -1,6 +1,8 @@
-package cs3500;
+package cs3500.elements;
 
 import java.awt.Color;
+
+import cs3500.IElement;
 
 /**
  * Abstract class that implements the {@code IElement} interface.

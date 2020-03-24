@@ -1,4 +1,4 @@
-package cs3500;
+package cs3500.elements;
 
 /**
  * Represents a coordinate upon a 2D-plane.

@@ -3,9 +3,6 @@ package cs3500.elements;
 import java.awt.Color;
 import java.util.Objects;
 
-import cs3500.AbstractElement;
-import cs3500.Posn;
-
 /**
  * Element to represent a rectangle.
  */

@@ -1,8 +1,12 @@
-package cs3500;
+package cs3500.views;
 
 import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
+
+import cs3500.IView;
+import cs3500.ReadOnlyAnimation;
+import cs3500.views.visualview.AnimationPanel;
 
 /**
  * Parent class for visual views and their respective decorator classes.

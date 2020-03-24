@@ -2,7 +2,7 @@ package cs3500.operations;
 import java.awt.Color;
 import cs3500.IElement;
 import cs3500.IOperation;
-import cs3500.Posn;
+import cs3500.elements.Posn;
 
 /**
  * Extends {@code AbstractOp} to handle the incremental motion of an element.

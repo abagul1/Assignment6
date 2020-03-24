@@ -1,4 +1,7 @@
-package cs3500;
+package cs3500.views.visualview;
+
+import cs3500.ReadOnlyAnimation;
+import cs3500.views.VisualView;
 
 /**
  * A simple visual view has no bells or whistles; it is simply a window that plays

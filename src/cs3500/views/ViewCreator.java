@@ -1,6 +1,8 @@
-package cs3500;
+package cs3500.views;
 
 import java.util.Objects;
+
+import cs3500.IView;
 
 public class ViewCreator {
 
