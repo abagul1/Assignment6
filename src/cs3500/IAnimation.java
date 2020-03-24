@@ -1,9 +1,5 @@
 package cs3500;
 
-import java.awt.Color;
-import java.util.List;
-import java.util.Map;
-
 /**
  * Interface for an Animation model within an M-V-C framework.
  * An animation consists of a collection of visual elements, where at least one element has its
