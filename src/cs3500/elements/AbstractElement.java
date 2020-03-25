@@ -1,6 +1,7 @@
 package cs3500.elements;
 
 import java.awt.Color;
+import java.awt.Graphics2D;
 
 import cs3500.IElement;
 
@@ -68,5 +69,10 @@ public abstract class AbstractElement implements IElement {
   @Override
   public void setPosn(Posn p) {
     this.center = new Posn(p);
+  }
+
+  @Override
+  public void paint(Graphics2D g2d) {
+    g2d.setColor(color);
   }
 }

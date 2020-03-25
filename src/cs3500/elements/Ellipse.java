@@ -1,6 +1,7 @@
 package cs3500.elements;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics2D;
 import java.util.Objects;
 
 /**
@@ -46,8 +47,7 @@ public class Ellipse extends AbstractElement {
    */
   @Override
   public double[] getDimensions() {
-    double[] dim = {getHeight(), getWidth()};
-    return dim;
+    return new double[]{getHeight(), getWidth()};
   }
 
   @Override
@@ -83,6 +83,7 @@ public class Ellipse extends AbstractElement {
 
   @Override
   public void paint(Graphics2D g2d) {
+    super.paint(g2d);
     g2d.fillOval((int)getPosn().getX(), (int)getPosn().getY(),
             (int)width, (int)height);
   }
