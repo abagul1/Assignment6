@@ -118,7 +118,7 @@ public class SVGView extends AbstractTextView {
   }
 
   @Override
-  public void getTextualView() {
+  public void execute() {
     try {
       fileWriter = new FileWriter(out);
       fileWriter.write(this.getSVG());

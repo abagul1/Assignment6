@@ -37,4 +37,10 @@ public class VisualView extends JFrame implements IView {
   public void makeVisible() {
     this.setVisible(true);
   }
+
+  @Override
+  public void execute() {
+    this.makeVisible();
+    this.refresh();
+  }
 }

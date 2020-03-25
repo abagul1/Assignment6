@@ -17,7 +17,7 @@ public class TextViewSysOut extends AbstractTextView {
   }
 
   @Override
-  public void getTextualView() {
+  public void execute() {
     System.out.println(super.getVerboseAnimation());
   }
 

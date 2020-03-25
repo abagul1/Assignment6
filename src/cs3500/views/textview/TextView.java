@@ -26,7 +26,7 @@ public class TextView extends AbstractTextView {
   }
 
   @Override
-  public void getTextualView() {
+  public void execute() {
     fileContent = super.getVerboseAnimation();
     try {
       fileWriter = new FileWriter(out);

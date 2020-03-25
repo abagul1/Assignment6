@@ -51,8 +51,4 @@ public abstract class AbstractTextView implements IView {
     return str.toString();
   }
 
-  /**
-   * Returns the textual output in the specified format, txt, svg, or system out.
-   */
-  public abstract void getTextualView();
 }

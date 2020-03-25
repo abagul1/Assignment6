@@ -13,4 +13,6 @@ public interface IView {
    * Make the view visible to start the game session.
    */
   void makeVisible();
+
+  void execute();
 }

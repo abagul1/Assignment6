@@ -3,6 +3,7 @@ package cs3500.animator.util;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
@@ -83,10 +84,14 @@ public final class AnimationRunner {
     }
 
     //Execute Program
-    AnimationReader ar = new AnimationReader();
-    AnimationBuilder<IAnimation> ab = new AnimationModel.Builder();
-    ViewCreator vc = new ViewCreator();
-    vc.create(viewType, ar.parseFile(inputFile, ab), outputFileName);
-
+    try {
+      AnimationReader ar = new AnimationReader();
+      AnimationBuilder<IAnimation> ab = new AnimationModel.Builder();
+      ViewCreator vc = new ViewCreator();
+      vc.create("visual", ar.parseFile(new FileReader("smalldemo.txt"), ab), "anything").execute();
+    }
+    catch (FileNotFoundException e) {
+      throw new IllegalArgumentException("File is invalid");
+    }
   }
 }
