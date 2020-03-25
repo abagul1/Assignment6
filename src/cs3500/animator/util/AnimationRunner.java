@@ -1,11 +1,15 @@
 package cs3500.animator.util;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
+
+import javax.swing.*;
 
 import cs3500.IAnimation;
 import cs3500.model.AnimationModel;
@@ -15,64 +19,35 @@ public final class AnimationRunner {
 
   public static void main(String[] args) {
 
-    // Command line args
     String inputFileName = "";
     String outputFileName = "System.out";
     String speed = "1";
-    String viewType = "";
-
-    // Parsed arguments
-    Readable inputFile = null;
+    String viewType = "visual";
     int tempo = 1;
 
-    for (String arg : args) {
-      Scanner scan = new Scanner(arg);
-
-      while (scan.hasNext()) {
-        try {
-          switch (scan.next()) {
-            case "-in":
-              inputFileName = scan.next();
-              break;
-            case "-out":
-              outputFileName = scan.next();
-              break;
-            case "-view":
-              viewType = scan.next();
-              break;
-            case "-speed":
-              speed = scan.next();
-              break;
-            default:
-              throw new IllegalStateException("Invalid arg");
-          }
-        }
-        catch (NoSuchElementException | IllegalStateException e) {
-          // TODO: Open JOptionPane and show error msg
+    for (int i = 0; i < args.length - 1; i++)  {
+        switch (args[i]) {
+          case "-in":
+            inputFileName = args[i + 1];
+            i++;
+            break;
+          case "-out":
+            outputFileName = args[i + 1];
+            i++;
+            break;
+          case "-view":
+            viewType = args[i + 1];
+            i++;
+            break;
+          case "-speed":
+            speed = args[i + 1];
+            i++;
+            break;
+          default:
+            throw new IllegalStateException("Invalid argument");
         }
       }
-    }
 
-    // Parse Input File
-    File inf = new File(inputFileName);
-    if (inf.exists() && inf.canRead()) {
-      try {
-        inputFile = new FileReader(inf);
-      }
-      catch (FileNotFoundException e) {
-        // TODO: Open JOptionPane and show error msg
-      }
-    }
-    else {
-      // TODO: Open JOptionPane and show error msg
-    }
-
-    // Parse View Type
-    if (!(viewType.equals("text") || viewType.equals("svg") || viewType.equals("visual"))) {
-      // TODO: Open JOptionPane and show error msg
-    }
-
-    // Parse Speed
     try {
       tempo = Integer.parseInt(speed);
       if (tempo < 1) {
@@ -84,13 +59,12 @@ public final class AnimationRunner {
     }
 
     //Execute Program
-
+    AnimationReader ar = new AnimationReader();
+    AnimationBuilder<IAnimation> ab = new AnimationModel.Builder();
+    ViewCreator vc = new ViewCreator();
     try {
-      AnimationReader ar = new AnimationReader();
-      AnimationBuilder<IAnimation> ab = new AnimationModel.Builder();
-      ViewCreator vc = new ViewCreator();
-      vc.create("svg", ar.parseFile(new FileReader("testfiles/smalldemo.txt"),
-              ab), "testfile/building.svg", tempo).execute();
+      vc.create(viewType, ar.parseFile(new FileReader(inputFileName),
+              ab), outputFileName, tempo).execute();
     }
     catch (FileNotFoundException e) {
       throw new IllegalArgumentException("File is invalid");

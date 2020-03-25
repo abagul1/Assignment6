@@ -38,23 +38,48 @@ public class SVGView extends AbstractTextView {
     StringBuilder str = new StringBuilder();
     for (String k : verboseOps.get(id)) {
       int[] arr = this.motionParser(k);
-      str.append("<animate attributeName=\"x\" attributeType=\"XML\"\n"
-              + "             begin=\"" + arr[0] + "s\" dur=\"" + (arr[8] - arr[0])
-              + "s\" fill=\"freeze\" from=\"" + arr[1] + "\" to=\"" + arr[9] + "\" />\n");
-      str.append("<animate attributeName=\"y\" attributeType=\"XML\"\n"
-              + "             begin=\"" + arr[0] + "s\" dur=\"" + (arr[8] - arr[0])
-              + "s\" fill=\"freeze\" from=\"" + arr[2] + "\" to=\"" + arr[10] + "\" />\n");
-      str.append("<animate attributeName=\"width\" attributeType=\"XML\"\n"
-              + "             begin=\"" + arr[0] + "s\" dur=\"" + (arr[8] - arr[0])
-              + "s\" fill=\"freeze\" from=\"" + arr[3] + "\" to=\"" + arr[11] + "\" />\n");
-      str.append("<animate attributeName=\"height\" attributeType=\"XML\"\n"
-              + "             begin=\"" + arr[0] + "s\" dur=\"" + (arr[8] - arr[0])
-              + "s\" fill=\"freeze\" from=\"" + arr[4] + "\" to=\"" + arr[12] + "\" />\n");
-      str.append("<animate attributeName=\"fill\" attributeType=\"CSS\"\n" +
-              "           from=\"rgb("+ arr[5] + "," + arr[6] + "," + arr[7]
-              + ")\" to=\"rgb("+ arr[13] + "," + arr[14] + "," + arr[15] +")\"\n" +
-              "           begin=\"" + arr[0] + "s\" dur=\"" + (arr[8] - arr[0])
-              + "s\" fill=\"freeze\" />\n");
+      switch (elements.get(id).getType()) {
+        case "rectangle":
+          str.append("<animate attributeName=\"x\" attributeType=\"XML\"\n"
+                  + "             begin=\"" + arr[0] + "s\" dur=\"" + (arr[8] - arr[0])
+                  + "s\" fill=\"freeze\" from=\"" + arr[1] + "\" to=\"" + arr[9] + "\" />\n");
+          str.append("<animate attributeName=\"y\" attributeType=\"XML\"\n"
+                  + "             begin=\"" + arr[0] + "s\" dur=\"" + (arr[8] - arr[0])
+                  + "s\" fill=\"freeze\" from=\"" + arr[2] + "\" to=\"" + arr[10] + "\" />\n");
+          str.append("<animate attributeName=\"width\" attributeType=\"XML\"\n"
+                  + "             begin=\"" + arr[0] + "s\" dur=\"" + (arr[8] - arr[0])
+                  + "s\" fill=\"freeze\" from=\"" + arr[3] + "\" to=\"" + arr[11] + "\" />\n");
+          str.append("<animate attributeName=\"height\" attributeType=\"XML\"\n"
+                  + "             begin=\"" + arr[0] + "s\" dur=\"" + (arr[8] - arr[0])
+                  + "s\" fill=\"freeze\" from=\"" + arr[4] + "\" to=\"" + arr[12] + "\" />\n");
+          str.append("<animate attributeName=\"fill\" attributeType=\"CSS\"\n" +
+                  "           from=\"rgb(" + arr[5] + "," + arr[6] + "," + arr[7]
+                  + ")\" to=\"rgb(" + arr[13] + "," + arr[14] + "," + arr[15] + ")\"\n" +
+                  "           begin=\"" + arr[0] + "s\" dur=\"" + (arr[8] - arr[0])
+                  + "s\" fill=\"freeze\" />\n");
+          break;
+        case "ellipse":
+          str.append("<animate attributeName=\"cx\" attributeType=\"XML\"\n"
+                  + "             begin=\"" + arr[0] + "s\" dur=\"" + (arr[8] - arr[0])
+                  + "s\" fill=\"freeze\" from=\"" + arr[1] + "\" to=\"" + arr[9] + "\" />\n");
+          str.append("<animate attributeName=\"cy\" attributeType=\"XML\"\n"
+                  + "             begin=\"" + arr[0] + "s\" dur=\"" + (arr[8] - arr[0])
+                  + "s\" fill=\"freeze\" from=\"" + arr[2] + "\" to=\"" + arr[10] + "\" />\n");
+          str.append("<animate attributeName=\"rx\" attributeType=\"XML\"\n"
+                  + "             begin=\"" + arr[0] + "s\" dur=\"" + (arr[8] - arr[0])
+                  + "s\" fill=\"freeze\" from=\"" + arr[3] + "\" to=\"" + arr[11] + "\" />\n");
+          str.append("<animate attributeName=\"ry\" attributeType=\"XML\"\n"
+                  + "             begin=\"" + arr[0] + "s\" dur=\"" + (arr[8] - arr[0])
+                  + "s\" fill=\"freeze\" from=\"" + arr[4] + "\" to=\"" + arr[12] + "\" />\n");
+          str.append("<animate attributeName=\"fill\" attributeType=\"CSS\"\n" +
+                  "           from=\"rgb(" + arr[5] + "," + arr[6] + "," + arr[7]
+                  + ")\" to=\"rgb(" + arr[13] + "," + arr[14] + "," + arr[15] + ")\"\n" +
+                  "           begin=\"" + arr[0] + "s\" dur=\"" + (arr[8] - arr[0])
+                  + "s\" fill=\"freeze\" />\n");
+          break;
+        default:
+          throw new IllegalArgumentException("Shape doesn't exist");
+      }
     }
     return str.toString();
   }
@@ -65,12 +90,9 @@ public class SVGView extends AbstractTextView {
    */
   private String getSVG() {
     StringBuilder str = new StringBuilder();
-    str.append("<?xml version=\"1.0\" standalone=\"no\"?>\n"
-            + "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \n"
-            + "  \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\n"
-            + "<svg width=\"" + width + "cm\" height=\"" + height
+    str.append("<svg width=\"" + width + "cm\" height=\"" + height
             + "cm\"  viewBox=\"0 0 800 300\"\n"
-            + "     xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\">");
+            + "     xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\"> \n");
 
     for (String key : elements.keySet()) {
       int[] arr;
@@ -85,8 +107,8 @@ public class SVGView extends AbstractTextView {
           break;
         case "ellipse":
           arr = this.motionParser(super.verboseOps.get(key).get(1));
-          str.append("<ellipse id=\"" + key + "\" x=\"" + arr[1] + "\" y=\"" + arr[2]
-                  + " \" width=\"" + arr[3] + "\" height=\"" + arr[4] + "\"\n"
+          str.append("<ellipse id=\"" + key + "\" cx=\"" + arr[1] + "\" cy=\"" + arr[2]
+                  + " \" rx=\"" + arr[3] + "\" ry=\"" + arr[4] + "\"\n"
                   + "        fill=\"rgb(" + arr[5] + "," + arr[6] + "," + arr[7] + ")\"  >\n");
           str.append(this.getSVGForElement(key));
           str.append("</ellipse>\n");
