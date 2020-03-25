@@ -23,9 +23,7 @@ public class SVGView extends AbstractTextView {
    */
   public SVGView(ReadOnlyAnimation a, String out) {
     super(a);
-    if (out.substring(out.length() - 4) != ".svg") {
-      throw new IllegalArgumentException("SVG output file is invalid");
-    }
+
     this.out = out;
     this.height = a.getHeight();
     this.width = a.getWidth();
@@ -97,6 +95,7 @@ public class SVGView extends AbstractTextView {
           throw new IllegalArgumentException("Shape doesn't exist");
       }
     }
+    str.append("</svg>");
     return str.toString();
   }
 
@@ -119,13 +118,17 @@ public class SVGView extends AbstractTextView {
 
   @Override
   public void execute() {
-    try {
-      fileWriter = new FileWriter(out);
-      fileWriter.write(this.getSVG());
-      fileWriter.close();
+    if (out == "System.out") {
+      System.out.println(this.getSVG());
     }
-    catch (IOException e) {
-      throw new IllegalStateException("file writer is not setup properly");
+    else {
+      try {
+        fileWriter = new FileWriter(out);
+        fileWriter.write(this.getSVG());
+        fileWriter.close();
+      } catch (IOException e) {
+        throw new IllegalStateException(e.getMessage());
+      }
     }
   }
 

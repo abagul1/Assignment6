@@ -12,8 +12,10 @@ import cs3500.views.visualview.AnimationPanel;
  * Parent class for visual views and their respective decorator classes.
  */
 public class VisualView extends JFrame implements IView {
+  private int speed;
+  private ReadOnlyAnimation m;
 
-  public VisualView(ReadOnlyAnimation m) {
+  public VisualView(ReadOnlyAnimation m, int speed) {
     super();
 
     if (m == null) {
@@ -26,6 +28,8 @@ public class VisualView extends JFrame implements IView {
     this.setTitle("Animation Station");
     this.setSize(AnimationPanel.DEFAULT_WIDTH, AnimationPanel.DEFAULT_HEIGHT);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    this.speed = speed;
+    this.m = m;
   }
 
   @Override
@@ -40,6 +44,7 @@ public class VisualView extends JFrame implements IView {
 
   @Override
   public void execute() {
+
     this.makeVisible();
     this.refresh();
   }

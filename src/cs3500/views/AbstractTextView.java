@@ -42,6 +42,9 @@ public abstract class AbstractTextView implements IView {
    */
   public String getVerboseAnimation() {
     StringBuilder str = new StringBuilder();
+    str.append("canvas ").append(a.getX()).append(" ")
+            .append(a.getY()).append(" ").append(a.getWidth()).append(" ")
+            .append(a.getHeight()).append("\n");
     for (String id : verboseOps.keySet()) {
       for (String i : verboseOps.get(id)) {
         str.append(i).append("\n");

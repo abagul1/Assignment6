@@ -236,6 +236,24 @@ public class AnimationModel implements IAnimation {
   }
 
   @Override
+  public void executeOneTick() {
+    List<IOperation> currentOps = new ArrayList<>();
+    for (Iterator<IOperation> iterator = operations.iterator(); iterator.hasNext();) {
+      IOperation op = iterator.next();
+      if (op.getTickToFireAt() == currentTick) {
+        for (IOperation co : currentOps) {
+          if (co.getElementId().equals(op.getElementId()) && op.getClass() == co.getClass()) {
+            throw new IllegalArgumentException("Cannot have two motions overlap");
+          }
+        }
+        currentOps.add(op);
+        op.fire();
+        iterator.remove();
+      }
+    }
+  }
+
+  @Override
   public IElement getElement(String id) {
     try {
       return elements.get(id);
@@ -263,6 +281,17 @@ public class AnimationModel implements IAnimation {
   public int getWidth() {
     return windowWidth;
   }
+
+  @Override
+  public int getX(){
+    return leftX;
+  }
+
+  @Override
+  public int getY(){
+    return topY;
+  }
+
 
   public static final class Builder implements AnimationBuilder<IAnimation> {
 

@@ -23,7 +23,7 @@ public final class AnimationRunner {
 
     // Parsed arguments
     Readable inputFile = null;
-    int tempo;
+    int tempo = 1;
 
     for (String arg : args) {
       Scanner scan = new Scanner(arg);
@@ -79,17 +79,18 @@ public final class AnimationRunner {
         throw new IllegalArgumentException("Tempo cannot be less than 1");
       }
     }
-    catch (IllegalArgumentException e) {
-      // TODO: Open JOptionPane and show error msg
+    catch (NumberFormatException e) {
+      throw new IllegalArgumentException("Tempo has to be a integer");
     }
 
     //Execute Program
+
     try {
       AnimationReader ar = new AnimationReader();
       AnimationBuilder<IAnimation> ab = new AnimationModel.Builder();
       ViewCreator vc = new ViewCreator();
-      vc.create("text", ar.parseFile(new FileReader("smalldemo.txt"),
-              ab), "System.out").execute();
+      vc.create("svg", ar.parseFile(new FileReader("testfiles/smalldemo.txt"),
+              ab), "testfile/building.svg", tempo).execute();
     }
     catch (FileNotFoundException e) {
       throw new IllegalArgumentException("File is invalid");

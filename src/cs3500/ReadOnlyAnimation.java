@@ -46,4 +46,22 @@ public interface ReadOnlyAnimation {
    * @return the width
    */
   int getWidth();
+
+  /**
+   * gets the x starting point.
+   * @return
+   */
+  int getX();
+
+  /**
+   * gets the y starting point.
+   * @return
+   */
+  int getY();
+
+  /**
+   * Increments model state by one tick.
+   */
+  void executeOneTick();
+
 }

@@ -21,7 +21,7 @@ public class ViewCreator {
    * @param out output file
    * @return a view
    */
-  public static IView create(String vt, ReadOnlyAnimation a, String out) {
+  public static IView create(String vt, ReadOnlyAnimation a, String out, int speed) {
     Objects.requireNonNull(vt, "Must have non-null view type");
 
     switch (vt) {
@@ -35,7 +35,7 @@ public class ViewCreator {
       case "svg":
         return new SVGView(a, out);
       case "visual":
-        return new VisualView(a);
+        return new VisualView(a, speed);
       default:
         throw new IllegalArgumentException("Invalid view type");
     }
