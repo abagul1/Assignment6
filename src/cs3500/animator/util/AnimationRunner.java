@@ -88,7 +88,8 @@ public final class AnimationRunner {
       AnimationReader ar = new AnimationReader();
       AnimationBuilder<IAnimation> ab = new AnimationModel.Builder();
       ViewCreator vc = new ViewCreator();
-      vc.create("visual", ar.parseFile(new FileReader("smalldemo.txt"), ab), "anything").execute();
+      vc.create("text", ar.parseFile(new FileReader("smalldemo.txt"),
+              ab), "System.out").execute();
     }
     catch (FileNotFoundException e) {
       throw new IllegalArgumentException("File is invalid");
