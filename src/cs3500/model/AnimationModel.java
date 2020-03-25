@@ -29,8 +29,8 @@ public class AnimationModel implements IAnimation {
 
   private int currentTick;
 
-  private int windowWidth;
-  private int windowHeight;
+  private final int windowWidth;
+  private final int windowHeight;
 
   /**
    * Constructor for animation model.
@@ -248,6 +248,16 @@ public class AnimationModel implements IAnimation {
   @Override
   public List<String> getMotionsForElement(String id) {
     return verboseOps.get(id);
+  }
+
+  @Override
+  public int getHeight() {
+    return windowHeight;
+  }
+
+  @Override
+  public int getWidth() {
+    return windowWidth;
   }
 
   public static final class Builder implements AnimationBuilder<IAnimation> {
