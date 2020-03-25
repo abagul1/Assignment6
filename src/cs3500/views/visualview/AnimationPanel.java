@@ -10,9 +10,6 @@ import cs3500.elements.Ellipse;
 
 public class AnimationPanel extends JPanel {
 
-  public static final int DEFAULT_WIDTH = 500;
-  public static final int DEFAULT_HEIGHT = 500;
-
   private ReadOnlyAnimation rom;
 
   public AnimationPanel(ReadOnlyAnimation m) {
