@@ -1,6 +1,8 @@
 package cs3500.views.visualview;
 
+import java.awt.Dimension;
 import java.awt.BorderLayout;
+import java.awt.Rectangle;
 
 import javax.swing.*;
 
@@ -11,7 +13,7 @@ import cs3500.views.visualview.AnimationPanel;
 /**
  * Parent class for visual views and their respective decorator classes.
  */
-public class VisualView extends JFrame implements IView {
+public class VisualView extends JFrame implements IView, Scrollable{
   private int speed;
   private ReadOnlyAnimation m;
 
@@ -19,6 +21,8 @@ public class VisualView extends JFrame implements IView {
     super();
 
     if (m == null) {
+      JOptionPane.showMessageDialog(null, "Model cannot be null",
+              "Error", JOptionPane.ERROR_MESSAGE);
       throw new IllegalArgumentException("Model cannot be null");
     }
 
@@ -26,7 +30,7 @@ public class VisualView extends JFrame implements IView {
             JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED), BorderLayout.CENTER);
 
     this.setTitle("Animation Station");
-    this.setSize(AnimationPanel.DEFAULT_WIDTH, AnimationPanel.DEFAULT_HEIGHT);
+    this.setSize(m.getWidth(), m.getHeight());
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     this.speed = speed;
     this.m = m;
@@ -44,8 +48,37 @@ public class VisualView extends JFrame implements IView {
 
   @Override
   public void execute() {
-
     this.makeVisible();
     this.refresh();
+  }
+
+  @Override
+  public Dimension getPreferredSize() {
+    return null;
+  }
+
+  @Override
+  public Dimension getPreferredScrollableViewportSize() {
+    return getPreferredSize();
+  }
+
+  @Override
+  public int getScrollableUnitIncrement(Rectangle visibleRect, int orientation, int direction) {
+    return 20;
+  }
+
+  @Override
+  public int getScrollableBlockIncrement(Rectangle visibleRect, int orientation, int direction) {
+    return 5;
+  }
+
+  @Override
+  public boolean getScrollableTracksViewportWidth() {
+    return false;
+  }
+
+  @Override
+  public boolean getScrollableTracksViewportHeight() {
+    return false;
   }
 }
