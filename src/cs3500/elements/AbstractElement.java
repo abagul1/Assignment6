@@ -69,7 +69,4 @@ public abstract class AbstractElement implements IElement {
   public void setPosn(Posn p) {
     this.center = new Posn(p);
   }
-
-  @Override
-  public abstract double[] getDimensions();
 }

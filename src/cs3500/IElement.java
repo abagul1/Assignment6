@@ -1,6 +1,6 @@
 package cs3500;
 
-import java.awt.Color;
+import java.awt.*;
 
 import cs3500.elements.Posn;
 
@@ -80,4 +80,10 @@ public interface IElement {
    * @return string of type of shape
    */
   String getType();
+
+  /**
+   * Paint the element onto the given 2D graphics object
+   * @param g2d  the 2D graphics object
+   */
+  void paint(Graphics2D g2d);
 }
