@@ -28,24 +28,21 @@ public class AnimationModel implements IAnimation {
   private Map<String, String> declaredShapes;
 
   private int currentTick;
-  private int ticksPerFrame;
 
   private int windowWidth;
   private int windowHeight;
 
   /**
    * Constructor for animation model.
-   * @param numTicksPerFrame speed of animation
    * @param width width of animation panel
    * @param height height of animation panel
    */
-  public AnimationModel(int numTicksPerFrame, int width, int height) {
+  public AnimationModel(int width, int height) {
     elements = new HashMap<>();
     operations = new ArrayList<>();
     verboseOps = new HashMap<>();
     declaredShapes = new HashMap<>();
     currentTick = 0;
-    ticksPerFrame = numTicksPerFrame;
     windowWidth = width;
     windowHeight = height;
   }
@@ -255,9 +252,14 @@ public class AnimationModel implements IAnimation {
 
   public static final class Builder implements AnimationBuilder<IAnimation> {
 
+    IAnimation modelToBuild;
+
     @Override
     public IAnimation build() {
-      return null;
+      if (isModelToBuildNull()) {
+        throw new IllegalStateException("Builder model has not been initialized");
+      }
+      return modelToBuild;
     }
 
     @Override
@@ -271,13 +273,20 @@ public class AnimationModel implements IAnimation {
     }
 
     @Override
-    public AnimationBuilder<IAnimation> addMotion(String name, int t1, int x1, int y1, int w1, int h1, int r1, int g1, int b1, int t2, int x2, int y2, int w2, int h2, int r2, int g2, int b2) {
+    public AnimationBuilder<IAnimation> addMotion(String name, int t1, int x1, int y1, int w1,
+                                                  int h1, int r1, int g1, int b1, int t2, int x2,
+                                                  int y2, int w2, int h2, int r2, int g2, int b2) {
       return null;
     }
 
     @Override
-    public AnimationBuilder<IAnimation> addKeyframe(String name, int t, int x, int y, int w, int h, int r, int g, int b) {
+    public AnimationBuilder<IAnimation> addKeyframe(String name, int t, int x, int y, int w, int h,
+                                                    int r, int g, int b) {
       return null;
+    }
+
+    private boolean isModelToBuildNull() {
+      return modelToBuild == null;
     }
   }
 }
