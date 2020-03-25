@@ -34,4 +34,16 @@ public interface ReadOnlyAnimation {
    * @return a textual description of the animation
    */
   String getVerboseAnimation();
+
+  /**
+   * Gets the height of the animation window.
+   * @return the height
+   */
+  int getHeight();
+
+  /**
+   * Gets the width of the animation window.
+   * @return the width
+   */
+  int getWidth();
 }
