@@ -36,8 +36,8 @@ public abstract class AbstractTextView {
   }
 
   /**
-   *
-   * @return
+   * Gets the text form of the animation from the model.
+   * @return a string with the text output of the animation
    */
   public String getVerboseAnimation() {
     StringBuilder str = new StringBuilder();
