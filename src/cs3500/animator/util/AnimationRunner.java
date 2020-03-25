@@ -6,6 +6,10 @@ import java.io.FileReader;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
+import cs3500.IAnimation;
+import cs3500.model.AnimationModel;
+import cs3500.views.ViewCreator;
+
 public final class AnimationRunner {
 
   public static void main(String[] args) {
@@ -17,8 +21,7 @@ public final class AnimationRunner {
     String viewType = "";
 
     // Parsed arguments
-    Readable inputFile;
-    Appendable outputFile;
+    Readable inputFile = null;
     int tempo;
 
     for (String arg : args) {
@@ -63,8 +66,6 @@ public final class AnimationRunner {
       // TODO: Open JOptionPane and show error msg
     }
 
-    // Parse Output File
-
     // Parse View Type
     if (!(viewType.equals("text") || viewType.equals("svg") || viewType.equals("visual"))) {
       // TODO: Open JOptionPane and show error msg
@@ -80,6 +81,12 @@ public final class AnimationRunner {
     catch (IllegalArgumentException e) {
       // TODO: Open JOptionPane and show error msg
     }
+
+    //Execute Program
+    AnimationReader ar = new AnimationReader();
+    AnimationBuilder<IAnimation> ab = new AnimationModel.Builder();
+    ViewCreator vc = new ViewCreator();
+    vc.create(viewType, ar.parseFile(inputFile, ab), outputFileName);
 
   }
 }

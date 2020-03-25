@@ -31,13 +31,15 @@ public class AnimationModel implements IAnimation {
 
   private final int windowWidth;
   private final int windowHeight;
+  private final int leftX;
+  private final int topY;
 
   /**
    * Constructor for animation model.
    * @param width width of animation panel
    * @param height height of animation panel
    */
-  public AnimationModel(int width, int height) {
+  public AnimationModel(int x, int y, int width, int height) {
     elements = new HashMap<>();
     operations = new ArrayList<>();
     verboseOps = new HashMap<>();
@@ -45,6 +47,8 @@ public class AnimationModel implements IAnimation {
     currentTick = 0;
     windowWidth = width;
     windowHeight = height;
+    leftX = x;
+    topY = y;
   }
 
   @Override
@@ -274,25 +278,35 @@ public class AnimationModel implements IAnimation {
 
     @Override
     public AnimationBuilder<IAnimation> setBounds(int x, int y, int width, int height) {
-      return null;
+      this.modelToBuild = new AnimationModel(x, y, width, height);
+      return this;
     }
 
     @Override
     public AnimationBuilder<IAnimation> declareShape(String name, String type) {
-      return null;
+      if (isModelToBuildNull()) {
+        throw new IllegalStateException("Builder model has not been initialized");
+      }
+      this.modelToBuild.insertElement(name, type);
+      return this;
     }
 
     @Override
     public AnimationBuilder<IAnimation> addMotion(String name, int t1, int x1, int y1, int w1,
                                                   int h1, int r1, int g1, int b1, int t2, int x2,
                                                   int y2, int w2, int h2, int r2, int g2, int b2) {
-      return null;
+      if (isModelToBuildNull()) {
+        throw new IllegalStateException("Builder model has not been initialized");
+      }
+      this.modelToBuild.motion(name, t1, x1, y1, w1, h1, r1, g1, b1,
+                                     t2, x2, y2, w2, h2, r2, g2, b2);
+      return this;
     }
 
     @Override
     public AnimationBuilder<IAnimation> addKeyframe(String name, int t, int x, int y, int w, int h,
                                                     int r, int g, int b) {
-      return null;
+      return this;
     }
 
     private boolean isModelToBuildNull() {

@@ -23,7 +23,7 @@ public class AnimatorTest {
 
   @Test
   public void testMoveOp() {
-    am = new AnimationModel(1, 500, 500);
+    am = new AnimationModel(0, 0, 500, 500);
     am.insertElement("R", "rectangle");
     am.motion("R", 1, 200, 200, 50, 100, 255, 0 ,0,
             10, 300, 150, 50 ,100, 255, 0, 0);
@@ -34,7 +34,7 @@ public class AnimatorTest {
 
   @Test
   public void testInsertOp() {
-    am = new AnimationModel(1, 500, 500);
+    am = new AnimationModel(0, 0, 500, 500);
     am.insertElement("R", "rectangle");
     am.motion("R", 5, 200, 200, 50, 100, 255, 0 ,0,
             10, 200, 200, 50 ,100, 255, 0, 0);
@@ -44,7 +44,7 @@ public class AnimatorTest {
 
   @Test
   public void testInsertOpTwoElementsSameTime() {
-    am = new AnimationModel(1, 500, 500);
+    am = new AnimationModel(0, 0, 500, 500);
     am.insertElement("R", "rectangle");
     am.insertElement("C", "ellipse");
     am.motion("R", 5, 200, 200, 50, 100, 255, 0 ,0,
@@ -58,7 +58,7 @@ public class AnimatorTest {
 
   @Test
   public void testScaleOp() {
-    am = new AnimationModel(1, 500, 500);
+    am = new AnimationModel(0, 0, 500, 500);
     am.insertElement("R", "rectangle");
     am.motion("R", 5, 200, 200, 50, 100, 255, 0 ,0,
             10, 200, 200, 54 ,246, 255, 0, 0);
@@ -69,7 +69,7 @@ public class AnimatorTest {
 
   @Test
   public void testChangeColorOp() {
-    am = new AnimationModel(1, 500, 500);
+    am = new AnimationModel(0, 0, 500, 500);
     am.insertElement("R", "rectangle");
     am.motion("R", 5, 200, 200, 50, 100, 255, 0 ,0,
             10, 200, 200, 54 ,246, 255, 0, 0);
@@ -87,7 +87,7 @@ public class AnimatorTest {
 
   @Test
   public void testGetVerboseAnimationMove() {
-    am = new AnimationModel(1, 500, 500);
+    am = new AnimationModel(0, 0, 500, 500);
     am.insertElement("R", "rectangle");
     am.motion("R", 1, 50, 50, 5, 10, 0, 255,0,
             5, 60, 30, 5 ,10, 0, 255, 0);
@@ -99,7 +99,7 @@ public class AnimatorTest {
 
   @Test
   public void testGetVerboseAnimationScale() {
-    am = new AnimationModel(1, 500, 500);
+    am = new AnimationModel(0, 0, 500, 500);
     am.insertElement("R", "rectangle");
     am.motion("R", 1, 50, 50, 5, 10, 0, 255,0,
             5, 60, 30, 10 ,20, 0, 255, 0);
@@ -110,7 +110,7 @@ public class AnimatorTest {
 
   @Test
   public void testGetVerboseAnimationChangeColor() {
-    am = new AnimationModel(1, 500, 500);
+    am = new AnimationModel(0, 0, 500, 500);
     am.insertElement("R", "rectangle");
     am.motion("R", 1, 50, 50, 5, 10, 0, 255,0,
             5, 60, 30, 10 ,20, 255, 0, 0);
@@ -121,7 +121,7 @@ public class AnimatorTest {
 
   @Test(expected = IllegalArgumentException.class)
   public void testSimultaneousMove() {
-    am = new AnimationModel(1, 500, 500);
+    am = new AnimationModel(0, 0, 500, 500);
     am.insertElement("R", "rectangle");
     am.motion("R", 1, 50, 50, 5, 10, 0, 255,0,
             5, 60, 30, 10 ,20, 255, 0, 0);
@@ -132,7 +132,7 @@ public class AnimatorTest {
 
   @Test(expected = IllegalArgumentException.class)
   public void testSimultaneousMoveWithExecuteUntil() {
-    am = new AnimationModel(1, 500, 500);
+    am = new AnimationModel(0, 0, 500, 500);
     am.insertElement("R", "rectangle");
     am.motion("R", 1, 50, 50, 5, 10, 0, 255,0,
             5, 60, 30, 10 ,20, 255, 0, 0);
@@ -143,7 +143,7 @@ public class AnimatorTest {
 
   @Test
   public void testMove2() {
-    am = new AnimationModel(1, 500, 500);
+    am = new AnimationModel(0, 0, 500, 500);
     am.insertElement("R", "rectangle");
     am.motion("R", 1, 200, 200, 50, 100, 255, 0 ,0,
             10, 300, 150, 50 ,100, 255, 0, 0);
@@ -156,7 +156,7 @@ public class AnimatorTest {
 
   @Test
   public void testChangeColorOp2() {
-    am = new AnimationModel(1, 500, 500);
+    am = new AnimationModel(0, 0, 500, 500);
     am.insertElement("R", "rectangle");
     am.motion("R", 5, 200, 200, 50, 100, 255, 0 ,0,
             10, 200, 200, 54 ,246, 255, 0, 0);
@@ -176,7 +176,7 @@ public class AnimatorTest {
 
   @Test
   public void testScaleOp2() {
-    am = new AnimationModel(1, 500, 500);
+    am = new AnimationModel(0, 0, 500, 500);
     am.insertElement("R", "rectangle");
     am.motion("R", 5, 200, 200, 50, 100, 255, 0 ,0,
             10, 200, 200, 54 ,246, 255, 0, 0);

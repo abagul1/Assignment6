@@ -5,12 +5,13 @@ import java.util.List;
 import java.util.Map;
 
 import cs3500.IElement;
+import cs3500.IView;
 import cs3500.ReadOnlyAnimation;
 
 /**
  * Represents an abstract view for text and svg formats.
  */
-public abstract class AbstractTextView {
+public abstract class AbstractTextView implements IView {
   protected Map<String, IElement> elements;
   protected Map<String, List<String>> verboseOps;
   protected ReadOnlyAnimation a;
