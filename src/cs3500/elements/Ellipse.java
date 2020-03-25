@@ -1,6 +1,6 @@
 package cs3500.elements;
 
-import java.awt.Color;
+import java.awt.*;
 import java.util.Objects;
 
 /**
@@ -79,5 +79,11 @@ public class Ellipse extends AbstractElement {
   @Override
   public int hashCode() {
     return Objects.hash(this.getID());
+  }
+
+  @Override
+  public void paint(Graphics2D g2d) {
+    g2d.fillOval((int)getPosn().getX(), (int)getPosn().getY(),
+            (int)width, (int)height);
   }
 }
