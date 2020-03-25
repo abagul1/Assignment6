@@ -9,8 +9,18 @@ import cs3500.views.textview.TextView;
 import cs3500.views.textview.TextViewSysOut;
 import cs3500.views.visualview.VisualView;
 
+/**
+ * Factory class to create the specified view.
+ */
 public class ViewCreator {
 
+  /**
+   * Creates a view and passes it a read only animation and output destination.
+   * @param vt view type
+   * @param a read only animation
+   * @param out output file
+   * @return a view
+   */
   public static IView create(String vt, ReadOnlyAnimation a, String out) {
     Objects.requireNonNull(vt, "Must have non-null view type");
 
