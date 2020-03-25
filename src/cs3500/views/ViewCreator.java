@@ -3,6 +3,8 @@ package cs3500.views;
 import java.util.Objects;
 
 import cs3500.IView;
+import cs3500.model.AnimationModel;
+import cs3500.views.textview.TextView;
 
 public class ViewCreator {
 
@@ -11,7 +13,7 @@ public class ViewCreator {
 
     switch (vt) {
       case "text":
-        // return new TextView
+        // return new Text View
         break;
       case "svg":
         // return new SVGView
@@ -22,6 +24,8 @@ public class ViewCreator {
       default:
         throw new IllegalArgumentException("Invalid view type");
     }
+    //TODO: fill out return statments.
+    return null;
   }
 
 }
