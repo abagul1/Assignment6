@@ -1,5 +1,6 @@
 package cs3500.views.visualview;
 
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
@@ -22,9 +23,15 @@ public class AnimationPanel extends JPanel {
     super.paintComponent(g);
 
     Graphics2D g2d = (Graphics2D) g;
+    g2d.translate(-rom.getX(), -rom.getY());
 
     for (String key : rom.getElements().keySet()) {
       rom.getElement(key).paint(g2d);
     }
+  }
+
+  @Override
+  public Dimension getPreferredSize() {
+    return new Dimension(rom.getWidth(), rom.getHeight());
   }
 }
