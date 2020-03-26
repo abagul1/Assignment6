@@ -59,9 +59,6 @@ public class AnimationModel implements IAnimation {
                      int t2, int x2, int y2, int w2, int h2, int r2, int g2, int b2) {
 
     this.checkNotNull();
-    if (t1 == t2) {
-      return;
-    }
 
     double tickDiff = t2 - t1;
     double dx = (x2 - x1) / tickDiff;
@@ -76,10 +73,12 @@ public class AnimationModel implements IAnimation {
       try {
         switch (declaredShapes.get(name)) {
           case "rectangle":
-            elements.put(name, new Rectangle(name, new Color(r1, g1, b1), new Posn(x1, y1), h1, w1));
+            elements.put(name, new Rectangle(name, new Color(r1, g1, b1, 0), new Posn(x1, y1),
+                    h1, w1));
             break;
           case "ellipse":
-            elements.put(name, new Ellipse(name, new Color(r1, g1, b1), new Posn(x1, y1), h1, w1));
+            elements.put(name, new Ellipse(name, new Color(r1, g1, b1,0), new Posn(x1, y1), h1,
+                    w1));
             break;
           default:
             throw new IllegalArgumentException("This type of shape doesn't exist: "
@@ -92,6 +91,7 @@ public class AnimationModel implements IAnimation {
 
     for (int i = t1; i < t2; i++) {
       operations.add(new Operation(dx, dy, dw, dh, dr, dg, db, i, elements.get(name)));
+      System.out.println(name + " " + i + " " + t2);
     }
     this.addVerboseMotion(name, t1, x1, y1, w1, h1, r1, g1, b1, t2, x2, y2, w2, h2, r2, g2, b2);
   }

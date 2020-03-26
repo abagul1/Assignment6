@@ -77,7 +77,7 @@ public class Operation implements IOperation {
       newBlue = 0;
     }
 
-    Color c = new Color(newRed, newGreen, newBlue);
+    Color c = new Color(newRed, newGreen, newBlue, 255);
     this.element.setColor(c);
   }
 

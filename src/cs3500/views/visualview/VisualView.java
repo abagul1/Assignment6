@@ -43,6 +43,7 @@ public class VisualView extends JFrame implements IView, Scrollable{
             ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
     scrollPane.setPreferredSize(new Dimension(600, 600));
     this.add(scrollPane);
+    this.makeVisible();
   }
 
   @Override
@@ -57,7 +58,6 @@ public class VisualView extends JFrame implements IView, Scrollable{
 
   @Override
   public void execute() {
-    this.makeVisible();
     this.refresh();
     m.executeOneTick();
   }
