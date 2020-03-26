@@ -21,6 +21,7 @@ public abstract class AbstractTextView implements IView {
    * @param a model to be used by the view
    */
   public AbstractTextView(ReadOnlyAnimation a) {
+
     this.a = a;
     this.elements = a.getElements();
     this.initVerboseOps();

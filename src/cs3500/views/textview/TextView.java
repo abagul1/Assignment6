@@ -34,7 +34,7 @@ public class TextView extends AbstractTextView {
       fileWriter.close();
     }
     catch (IOException e) {
-      throw new IllegalStateException("file writer is not setup properly");
+      throw new IllegalArgumentException("file writer is not setup properly");
     }
   }
 
