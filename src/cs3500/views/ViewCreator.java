@@ -38,7 +38,7 @@ public class ViewCreator {
       case "svg":
         return new SVGView(a, out, speed);
       case "visual":
-        return new VisualView(a, speed);
+        return new VisualView(a);
       default:
         throw new IllegalArgumentException("Invalid view type");
     }

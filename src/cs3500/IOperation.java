@@ -34,4 +34,5 @@ public interface IOperation {
    * Return the element ID relating to the operation.
    */
   String getElementId();
+
 }

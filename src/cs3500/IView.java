@@ -14,5 +14,8 @@ public interface IView {
    */
   void makeVisible();
 
+  /**
+   * Command to execute the desired view.
+   */
   void execute();
 }

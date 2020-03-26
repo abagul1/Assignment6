@@ -2,7 +2,8 @@ package cs3500.model;
 
 import java.awt.Color;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -95,6 +96,26 @@ public class AnimationModel implements IAnimation {
     this.addVerboseMotion(name, t1, x1, y1, w1, h1, r1, g1, b1, t2, x2, y2, w2, h2, r2, g2, b2);
   }
 
+  /**
+   * Adds a verbose description of the motion.
+   * @param id element id
+   * @param t1 tick to start
+   * @param x1 starting x pos
+   * @param y1 starting y pos
+   * @param w1 starting width
+   * @param h1 starting height
+   * @param r1 starting red value
+   * @param g1 starting green value
+   * @param b1 starting blue value
+   * @param t2 ending tick
+   * @param x2 ending x value
+   * @param y2 ending y value
+   * @param w2 ending width
+   * @param h2 ending height
+   * @param r2 ending red value
+   * @param g2 ending green value
+   * @param b2 ending blue value
+   */
   private void addVerboseMotion(String id,
                                 int t1, int x1, int y1, int w1, int h1, int r1, int g1, int b1,
                                 int t2, int x2, int y2, int w2, int h2, int r2, int g2, int b2) {
@@ -240,6 +261,11 @@ public class AnimationModel implements IAnimation {
   }
 
   @Override
+  public void sortOperations() {
+    Collections.sort(this.operations, Comparator.comparingInt(IOperation::getTickToFireAt));
+  }
+
+  @Override
   public void executeOneTick() {
     List<IOperation> currentOps = new ArrayList<>();
     for (Iterator<IOperation> iterator = operations.iterator(); iterator.hasNext();) {
@@ -253,6 +279,9 @@ public class AnimationModel implements IAnimation {
         currentOps.add(op);
         op.fire();
         iterator.remove();
+      }
+      else if (op.getTickToFireAt() > currentTick) {
+        break;
       }
     }
     currentTick++;
@@ -297,10 +326,12 @@ public class AnimationModel implements IAnimation {
     return topY;
   }
 
-
+  /**
+   * Builder class to create an anumation
+   */
   public static final class Builder implements AnimationBuilder<IAnimation> {
 
-    IAnimation modelToBuild;
+    private IAnimation modelToBuild;
 
     @Override
     public IAnimation build() {

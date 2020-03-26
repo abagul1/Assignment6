@@ -7,12 +7,18 @@ import java.awt.Graphics2D;
 import javax.swing.JPanel;
 
 import cs3500.ReadOnlyAnimation;
-import cs3500.elements.Ellipse;
 
+/**
+ * Class to represent an animation panel.
+ */
 public class AnimationPanel extends JPanel {
 
   private ReadOnlyAnimation rom;
 
+  /**
+   * constructor for an animation panel.
+   * @param m read only model
+   */
   public AnimationPanel(ReadOnlyAnimation m) {
     super();
     this.rom = m;

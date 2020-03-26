@@ -1,6 +1,5 @@
 package cs3500.views;
-
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -31,7 +30,7 @@ public abstract class AbstractTextView implements IView {
    * Initialize the verbose map of elements and motions associated with those elements.
    */
   private void initVerboseOps() {
-    this.verboseOps = new HashMap<>();
+    this.verboseOps = new LinkedHashMap<>();
     for (String key : elements.keySet()) {
       verboseOps.put(key, a.getMotionsForElement(key));
     }

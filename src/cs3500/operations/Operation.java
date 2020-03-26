@@ -54,9 +54,30 @@ public class Operation implements IOperation {
             this.element.getPosn().getY() + dy));
     this.element.setHeight(element.getDimensions()[0] + dh);
     this.element.setWidth(element.getDimensions()[1] + dw);
-    Color c = new Color((int) (this.element.getColor().getRed() + dr),
-            (int) (this.element.getColor().getGreen() + dg),
-            (int) (this.element.getColor().getBlue() + db));
+    int newRed  = (int) (this.element.getColor().getRed() + dr);
+    int newGreen = (int) (this.element.getColor().getGreen() + dg);
+    int newBlue = (int) (this.element.getColor().getBlue() + db);
+
+    if (newRed > 255) {
+      newRed = 255;
+    }
+    if (newGreen > 255) {
+      newGreen = 255;
+    }
+    if (newBlue > 255) {
+      newBlue = 255;
+    }
+    if (newRed < 0) {
+      newRed = 0;
+    }
+    if (newGreen < 0) {
+      newGreen = 0;
+    }
+    if (newBlue < 0) {
+      newBlue = 0;
+    }
+
+    Color c = new Color(newRed, newGreen, newBlue);
     this.element.setColor(c);
   }
 
@@ -64,4 +85,5 @@ public class Operation implements IOperation {
   public String getElementId() {
     return element.getID();
   }
+
 }

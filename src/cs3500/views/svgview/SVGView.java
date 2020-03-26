@@ -102,7 +102,7 @@ public class SVGView extends AbstractTextView {
    */
   public String getSVG() {
     StringBuilder str = new StringBuilder();
-    str.append("<svg width=\"" + width + "\" height=\"" + height
+    str.append("<svg width=\"" + width + a.getX() + "\" height=\"" + height + a.getY()
             + "\"\n"
             + "     xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\"> \n");
 

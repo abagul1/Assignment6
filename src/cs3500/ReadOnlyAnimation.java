@@ -64,4 +64,9 @@ public interface ReadOnlyAnimation {
    */
   void executeOneTick();
 
+  /**
+   * Sort the list of operations to improve performance.
+   */
+  void sortOperations();
+
 }

@@ -1,6 +1,7 @@
 package cs3500;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics2D;
 
 import cs3500.elements.Posn;
 

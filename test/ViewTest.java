@@ -16,6 +16,9 @@ import cs3500.views.textview.TextView;
 import cs3500.views.textview.TextViewSysOut;
 import cs3500.views.visualview.VisualView;
 
+/**
+ * Tests for views.
+ */
 public class ViewTest {
 
   private IAnimation am;
@@ -188,7 +191,7 @@ public class ViewTest {
   @Test
   public void testFactoryViewSVG() {
     am = new AnimationModel(0,0,500,500);
-    IView v = new ViewCreator().create("svg", am,"text.txt",1);
+    IView v = new ViewCreator().create("svg", am,"text.svg",1);
     assertEquals(SVGView.class, v.getClass());
   }
 
