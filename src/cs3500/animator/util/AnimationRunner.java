@@ -14,8 +14,8 @@ public final class AnimationRunner {
     String inputFileName = "";
     String outputFileName = "System.out";
     String speed = "1";
-    String viewType = "visual";
-    int tempo = 1;
+    String viewType = "";
+    int tempo;
 
     for (int i = 0; i < args.length - 1; i++)  {
         switch (args[i]) {
@@ -42,9 +42,6 @@ public final class AnimationRunner {
 
     try {
       tempo = Integer.parseInt(speed);
-      if (tempo < 1) {
-        throw new IllegalArgumentException("Tempo cannot be less than 1");
-      }
     }
     catch (NumberFormatException e) {
       throw new IllegalArgumentException("Tempo has to be a integer");

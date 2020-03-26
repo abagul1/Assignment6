@@ -23,6 +23,9 @@ public class ViewCreator {
    */
   public static IView create(String vt, ReadOnlyAnimation a, String out, int speed) {
     Objects.requireNonNull(vt, "Must have non-null view type");
+    if (speed < 1) {
+      throw new IllegalArgumentException("Speed must be at least 1");
+    }
 
     switch (vt) {
       case "text":
