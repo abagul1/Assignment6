@@ -7,8 +7,15 @@ import cs3500.IAnimation;
 import cs3500.model.AnimationModel;
 import cs3500.views.ViewCreator;
 
+/**
+ * Main Class to run the program from.
+ */
 public final class AnimationRunner {
 
+  /**
+   * Main method to run program and serve as defacto controller.
+   * @param args input arguments
+   */
   public static void main(String[] args) {
 
     String inputFileName = "";
