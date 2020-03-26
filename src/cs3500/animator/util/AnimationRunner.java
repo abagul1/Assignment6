@@ -69,8 +69,8 @@ public final class AnimationRunner {
 
       if (viewType.equals("visual")) {
         Timer t = new Timer(1000 / tempo, e -> view.execute());
-        t.setRepeats(true);
         t.start();
+        t.setRepeats(true);
       }
       else {
         view.execute();

@@ -58,6 +58,9 @@ public class AnimationModel implements IAnimation {
                      int t2, int x2, int y2, int w2, int h2, int r2, int g2, int b2) {
 
     this.checkNotNull();
+    if (t1 == t2) {
+      return;
+    }
 
     double tickDiff = t2 - t1;
     double dx = (x2 - x1) / tickDiff;
