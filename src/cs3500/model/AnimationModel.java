@@ -91,7 +91,6 @@ public class AnimationModel implements IAnimation {
 
     for (int i = t1; i < t2; i++) {
       operations.add(new Operation(dx, dy, dw, dh, dr, dg, db, i, elements.get(name)));
-      System.out.println(name + " " + i + " " + t2);
     }
     this.addVerboseMotion(name, t1, x1, y1, w1, h1, r1, g1, b1, t2, x2, y2, w2, h2, r2, g2, b2);
   }
