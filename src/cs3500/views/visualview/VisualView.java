@@ -4,7 +4,10 @@ import java.awt.Dimension;
 import java.awt.BorderLayout;
 import java.awt.Rectangle;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.Scrollable;
 
 import cs3500.IView;
 import cs3500.ReadOnlyAnimation;
@@ -26,14 +29,16 @@ public class VisualView extends JFrame implements IView, Scrollable{
       throw new IllegalArgumentException("Model cannot be null");
     }
 
-    this.add(new JScrollPane(new AnimationPanel(m), JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
-            JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED), BorderLayout.CENTER);
+    this.m = m;
+    this.speed = speed;
+
+    AnimationPanel animationPanel = new AnimationPanel(m);
+    this.add(animationPanel);
 
     this.setTitle("Animation Station");
     this.setSize(m.getWidth(), m.getHeight());
+    this.setLocationRelativeTo(null);
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    this.speed = speed;
-    this.m = m;
   }
 
   @Override
@@ -54,7 +59,7 @@ public class VisualView extends JFrame implements IView, Scrollable{
 
   @Override
   public Dimension getPreferredSize() {
-    return null;
+    return new Dimension(m.getWidth(), m.getHeight());
   }
 
   @Override
