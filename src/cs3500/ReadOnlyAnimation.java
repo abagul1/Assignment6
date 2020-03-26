@@ -49,13 +49,13 @@ public interface ReadOnlyAnimation {
 
   /**
    * gets the x starting point.
-   * @return
+   * @return starting x.
    */
   int getX();
 
   /**
    * gets the y starting point.
-   * @return
+   * @return starting y.
    */
   int getY();
 
