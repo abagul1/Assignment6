@@ -327,7 +327,7 @@ public class AnimationModel implements IAnimation {
   }
 
   /**
-   * Builder class to create an anumation
+   * Builder class to create an animation.
    */
   public static final class Builder implements AnimationBuilder<IAnimation> {
 
