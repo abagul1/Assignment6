@@ -1,9 +1,14 @@
 package cs3500.animator.util;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 
+import javax.swing.*;
+
 import cs3500.IAnimation;
+import cs3500.IView;
 import cs3500.model.AnimationModel;
 import cs3500.views.ViewCreator;
 
@@ -59,8 +64,17 @@ public final class AnimationRunner {
     AnimationBuilder<IAnimation> ab = new AnimationModel.Builder();
     ViewCreator vc = new ViewCreator();
     try {
-      vc.create(viewType, ar.parseFile(new FileReader(inputFileName),
-              ab), outputFileName, tempo).execute();
+      IView view = vc.create(viewType, ar.parseFile(new FileReader(inputFileName),
+              ab), outputFileName, tempo);
+
+      if (viewType.equals("visual")) {
+        Timer t = new Timer(1000 / tempo, e -> view.execute());
+        t.setRepeats(true);
+        t.start();
+      }
+      else {
+        view.execute();
+      }
     }
     catch (FileNotFoundException e) {
       throw new IllegalArgumentException("File is invalid");

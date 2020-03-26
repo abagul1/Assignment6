@@ -252,6 +252,7 @@ public class AnimationModel implements IAnimation {
         iterator.remove();
       }
     }
+    currentTick++;
   }
 
   @Override

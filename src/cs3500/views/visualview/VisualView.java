@@ -3,11 +3,10 @@ package cs3500.views.visualview;
 import java.awt.Dimension;
 import java.awt.BorderLayout;
 import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
-import javax.swing.Scrollable;
+import javax.swing.*;
 
 import cs3500.IView;
 import cs3500.ReadOnlyAnimation;
@@ -55,6 +54,7 @@ public class VisualView extends JFrame implements IView, Scrollable{
   public void execute() {
     this.makeVisible();
     this.refresh();
+    m.executeOneTick();
   }
 
   @Override
