@@ -1,7 +1,12 @@
 import org.junit.Test;
 
 import java.awt.Color;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 import cs3500.IAnimation;
 import cs3500.IElement;
 import cs3500.IView;
@@ -51,6 +56,8 @@ public class ViewTest {
             + "motion C 1 100 100 10 50 0 0 255 3 100 100 10 50 0 0 255\n"
             + "motion C 3 100 100 10 50 0 0 255 4 100 100 20 100 0 0 255\n\n",
             v.getVerboseAnimation());
+    v.execute();
+    assertTrue(Files.exists(Paths.get("out.txt")));
   }
 
   @Test(expected = IllegalArgumentException.class)
@@ -109,6 +116,8 @@ public class ViewTest {
             3, 200,200,10,50,255,0,0);
     SVGView v = new SVGView(am, "out.txt", 1);
     assertEquals(svg(), v.getSVG());
+    v.execute();
+    assertTrue(Files.exists(Paths.get("out.txt")));
   }
 
   private String svg() {
