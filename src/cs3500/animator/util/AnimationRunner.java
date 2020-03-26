@@ -1,15 +1,7 @@
 package cs3500.animator.util;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
-import java.util.NoSuchElementException;
-import java.util.Scanner;
-
-import javax.swing.*;
 
 import cs3500.IAnimation;
 import cs3500.model.AnimationModel;
