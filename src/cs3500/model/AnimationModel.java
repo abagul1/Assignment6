@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -40,10 +41,10 @@ public class AnimationModel implements IAnimation {
    * @param height height of animation panel
    */
   public AnimationModel(int x, int y, int width, int height) {
-    elements = new HashMap<>();
+    elements = new LinkedHashMap<>();
     operations = new ArrayList<>();
-    verboseOps = new HashMap<>();
-    declaredShapes = new HashMap<>();
+    verboseOps = new LinkedHashMap<>();
+    declaredShapes = new LinkedHashMap<>();
     currentTick = 0;
     windowWidth = width;
     windowHeight = height;

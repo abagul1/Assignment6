@@ -33,7 +33,7 @@ public class ViewCreator {
           return new TextView(a, out);
         }
       case "svg":
-        return new SVGView(a, out);
+        return new SVGView(a, out, speed);
       case "visual":
         return new VisualView(a, speed);
       default:

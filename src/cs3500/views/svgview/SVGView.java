@@ -15,18 +15,20 @@ public class SVGView extends AbstractTextView {
   private FileWriter fileWriter;
   private int height;
   private int width;
+  private int speed;
 
   /**
    * Constructor for an svg file.
    * @param a read only animation
    * @param out output destination
    */
-  public SVGView(ReadOnlyAnimation a, String out) {
+  public SVGView(ReadOnlyAnimation a, String out, int speed) {
     super(a);
 
     this.out = out;
     this.height = a.getHeight();
     this.width = a.getWidth();
+    this.speed = speed;
   }
 
   /**
@@ -41,41 +43,41 @@ public class SVGView extends AbstractTextView {
       switch (elements.get(id).getType()) {
         case "rectangle":
           str.append("<animate attributeName=\"x\" attributeType=\"XML\"\n"
-                  + "             begin=\"" + arr[0] + "s\" dur=\"" + (arr[8] - arr[0])
-                  + "s\" fill=\"freeze\" from=\"" + arr[1] + "\" to=\"" + arr[9] + "\" />\n");
+                  + "             begin=\"" + arr[0] * (1000/speed) + "ms\" dur=\"" + (arr[8] - arr[0]) * (1000/speed)
+                  + "ms\" fill=\"freeze\" from=\"" + arr[1] + "\" to=\"" + arr[9] + "\" />\n");
           str.append("<animate attributeName=\"y\" attributeType=\"XML\"\n"
-                  + "             begin=\"" + arr[0] + "s\" dur=\"" + (arr[8] - arr[0])
-                  + "s\" fill=\"freeze\" from=\"" + arr[2] + "\" to=\"" + arr[10] + "\" />\n");
+                  + "             begin=\"" + arr[0] * (1000/speed) + "ms\" dur=\"" + (arr[8] - arr[0]) * (1000/speed)
+                  + "ms\" fill=\"freeze\" from=\"" + arr[2] + "\" to=\"" + arr[10] + "\" />\n");
           str.append("<animate attributeName=\"width\" attributeType=\"XML\"\n"
-                  + "             begin=\"" + arr[0] + "s\" dur=\"" + (arr[8] - arr[0])
-                  + "s\" fill=\"freeze\" from=\"" + arr[3] + "\" to=\"" + arr[11] + "\" />\n");
+                  + "             begin=\"" + arr[0] * (1000/speed) + "ms\" dur=\"" + (arr[8] - arr[0]) * (1000/speed)
+                  + "ms\" fill=\"freeze\" from=\"" + arr[3] + "\" to=\"" + arr[11] + "\" />\n");
           str.append("<animate attributeName=\"height\" attributeType=\"XML\"\n"
-                  + "             begin=\"" + arr[0] + "s\" dur=\"" + (arr[8] - arr[0])
-                  + "s\" fill=\"freeze\" from=\"" + arr[4] + "\" to=\"" + arr[12] + "\" />\n");
+                  + "             begin=\"" + arr[0] * (1000/speed) + "ms\" dur=\"" + (arr[8] - arr[0]) * (1000/speed)
+                  + "ms\" fill=\"freeze\" from=\"" + arr[4] + "\" to=\"" + arr[12] + "\" />\n");
           str.append("<animate attributeName=\"fill\" attributeType=\"CSS\"\n" +
                   "           from=\"rgb(" + arr[5] + "," + arr[6] + "," + arr[7]
                   + ")\" to=\"rgb(" + arr[13] + "," + arr[14] + "," + arr[15] + ")\"\n" +
-                  "           begin=\"" + arr[0] + "s\" dur=\"" + (arr[8] - arr[0])
-                  + "s\" fill=\"freeze\" />\n");
+                  "           begin=\"" + arr[0] * (1000/speed) + "ms\" dur=\"" + (arr[8] - arr[0]) * (1000/speed)
+                  + "ms\" fill=\"freeze\" />\n");
           break;
         case "ellipse":
           str.append("<animate attributeName=\"cx\" attributeType=\"XML\"\n"
-                  + "             begin=\"" + arr[0] + "s\" dur=\"" + (arr[8] - arr[0])
-                  + "s\" fill=\"freeze\" from=\"" + arr[1] + "\" to=\"" + arr[9] + "\" />\n");
+                  + "             begin=\"" + arr[0] * (1000/speed) + "ms\" dur=\"" + (arr[8] - arr[0]) * (1000/speed)
+                  + "ms\" fill=\"freeze\" from=\"" + arr[1] + "\" to=\"" + arr[9] + "\" />\n");
           str.append("<animate attributeName=\"cy\" attributeType=\"XML\"\n"
-                  + "             begin=\"" + arr[0] + "s\" dur=\"" + (arr[8] - arr[0])
-                  + "s\" fill=\"freeze\" from=\"" + arr[2] + "\" to=\"" + arr[10] + "\" />\n");
+                  + "             begin=\"" + arr[0] * (1000/speed) + "ms\" dur=\"" + (arr[8] - arr[0]) * (1000/speed)
+                  + "ms\" fill=\"freeze\" from=\"" + arr[2] + "\" to=\"" + arr[10] + "\" />\n");
           str.append("<animate attributeName=\"rx\" attributeType=\"XML\"\n"
-                  + "             begin=\"" + arr[0] + "s\" dur=\"" + (arr[8] - arr[0])
-                  + "s\" fill=\"freeze\" from=\"" + arr[3] + "\" to=\"" + arr[11] + "\" />\n");
+                  + "             begin=\"" + arr[0] * (1000/speed) + "ms\" dur=\"" + (arr[8] - arr[0]) * (1000/speed)
+                  + "ms\" fill=\"freeze\" from=\"" + arr[3] + "\" to=\"" + arr[11] + "\" />\n");
           str.append("<animate attributeName=\"ry\" attributeType=\"XML\"\n"
-                  + "             begin=\"" + arr[0] + "s\" dur=\"" + (arr[8] - arr[0])
-                  + "s\" fill=\"freeze\" from=\"" + arr[4] + "\" to=\"" + arr[12] + "\" />\n");
+                  + "             begin=\"" + arr[0] * (1000/speed) + "ms\" dur=\"" + (arr[8] - arr[0]) * (1000/speed)
+                  + "ms\" fill=\"freeze\" from=\"" + arr[4] + "\" to=\"" + arr[12] + "\" />\n");
           str.append("<animate attributeName=\"fill\" attributeType=\"CSS\"\n" +
                   "           from=\"rgb(" + arr[5] + "," + arr[6] + "," + arr[7]
                   + ")\" to=\"rgb(" + arr[13] + "," + arr[14] + "," + arr[15] + ")\"\n" +
-                  "           begin=\"" + arr[0] + "s\" dur=\"" + (arr[8] - arr[0])
-                  + "s\" fill=\"freeze\" />\n");
+                  "           begin=\"" + arr[0] * (1000/speed) + "ms\" dur=\"" + (arr[8] - arr[0]) * (1000/speed)
+                  + "ms\" fill=\"freeze\" />\n");
           break;
         default:
           throw new IllegalArgumentException("Shape doesn't exist");
@@ -90,8 +92,8 @@ public class SVGView extends AbstractTextView {
    */
   private String getSVG() {
     StringBuilder str = new StringBuilder();
-    str.append("<svg width=\"" + width + "cm\" height=\"" + height
-            + "cm\"  viewBox=\"0 0 800 300\"\n"
+    str.append("<svg width=\"" + width + "\" height=\"" + height
+            + "\"\n"
             + "     xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\"> \n");
 
     for (String key : elements.keySet()) {
@@ -131,6 +133,7 @@ public class SVGView extends AbstractTextView {
     String str = s.substring(8);
     Scanner scan = new Scanner(str);
     int i = 0;
+    scan.next();
     while (scan.hasNextInt()) {
       arr[i] = scan.nextInt();
       i++;
