@@ -32,4 +32,7 @@ Assignment 6 Key Notes:
     The text and svg views are able to output to the console if no output path is specified, and
     will create a new file with the given name if the output file does not already exist.
 
+Operational Notes:
 
+    The way our model is structured, each tick represents a frame, so the speed is both the
+    frame rate and the speed of execution. For optimal animation rendering use speeds above 10.

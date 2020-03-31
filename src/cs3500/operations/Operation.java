@@ -1,4 +1,5 @@
 package cs3500.operations;
+
 import java.awt.Color;
 import cs3500.IElement;
 import cs3500.IOperation;
@@ -50,11 +51,12 @@ public class Operation implements IOperation {
 
   @Override
   public void fire() {
+
     this.element.setPosn(new Posn(this.element.getPosn().getX() + dx,
             this.element.getPosn().getY() + dy));
     this.element.setHeight(element.getDimensions()[0] + dh);
     this.element.setWidth(element.getDimensions()[1] + dw);
-    int newRed  = (int) (this.element.getColor().getRed() + dr);
+    int newRed = (int) (this.element.getColor().getRed() + dr);
     int newGreen = (int) (this.element.getColor().getGreen() + dg);
     int newBlue = (int) (this.element.getColor().getBlue() + db);
 
@@ -79,6 +81,8 @@ public class Operation implements IOperation {
 
     Color c = new Color(newRed, newGreen, newBlue, 255);
     this.element.setColor(c);
+
+
   }
 
   @Override

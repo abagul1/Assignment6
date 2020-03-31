@@ -43,50 +43,50 @@ public class SVGView extends AbstractTextView {
       switch (elements.get(id).getType()) {
         case "rectangle":
           str.append("<animate attributeName=\"x\" attributeType=\"XML\"\n"
-                  + "             begin=\"" + arr[0] * (1000/speed) + "ms\" dur=\""
-                  + (arr[8] - arr[0]) * (1000/speed)
+                  + "             begin=\"" + arr[0] * (1000 / speed) + "ms\" dur=\""
+                  + (arr[8] - arr[0]) * (1000 / speed)
                   + "ms\" fill=\"freeze\" from=\"" + arr[1] + "\" to=\"" + arr[9] + "\" />\n");
           str.append("<animate attributeName=\"y\" attributeType=\"XML\"\n"
-                  + "             begin=\"" + arr[0] * (1000/speed) + "ms\" dur=\""
-                  + (arr[8] - arr[0]) * (1000/speed)
+                  + "             begin=\"" + arr[0] * (1000 / speed) + "ms\" dur=\""
+                  + (arr[8] - arr[0]) * (1000 / speed)
                   + "ms\" fill=\"freeze\" from=\"" + arr[2] + "\" to=\"" + arr[10] + "\" />\n");
           str.append("<animate attributeName=\"width\" attributeType=\"XML\"\n"
-                  + "             begin=\"" + arr[0] * (1000/speed) + "ms\" dur=\""
-                  + (arr[8] - arr[0]) * (1000/speed)
+                  + "             begin=\"" + arr[0] * (1000 / speed) + "ms\" dur=\""
+                  + (arr[8] - arr[0]) * (1000 / speed)
                   + "ms\" fill=\"freeze\" from=\"" + arr[3] + "\" to=\"" + arr[11] + "\" />\n");
           str.append("<animate attributeName=\"height\" attributeType=\"XML\"\n"
-                  + "             begin=\"" + arr[0] * (1000/speed) + "ms\" dur=\""
-                  + (arr[8] - arr[0]) * (1000/speed)
+                  + "             begin=\"" + arr[0] * (1000 / speed) + "ms\" dur=\""
+                  + (arr[8] - arr[0]) * (1000 / speed)
                   + "ms\" fill=\"freeze\" from=\"" + arr[4] + "\" to=\"" + arr[12] + "\" />\n");
-          str.append("<animate attributeName=\"fill\" attributeType=\"CSS\"\n" +
-                  "           from=\"rgb(" + arr[5] + "," + arr[6] + "," + arr[7]
-                  + ")\" to=\"rgb(" + arr[13] + "," + arr[14] + "," + arr[15] + ")\"\n" +
-                  "           begin=\"" + arr[0] * (1000/speed) + "ms\" dur=\""
-                  + (arr[8] - arr[0]) * (1000/speed)
+          str.append("<animate attributeName=\"fill\" attributeType=\"CSS\"\n"
+                  + "           from=\"rgb(" + arr[5] + "," + arr[6] + "," + arr[7]
+                  + ")\" to=\"rgb(" + arr[13] + "," + arr[14] + "," + arr[15] + ")\"\n"
+                  + "           begin=\"" + arr[0] * (1000 / speed) + "ms\" dur=\""
+                  + (arr[8] - arr[0]) * (1000 / speed)
                   + "ms\" fill=\"freeze\" />\n");
           break;
         case "ellipse":
           str.append("<animate attributeName=\"cx\" attributeType=\"XML\"\n"
-                  + "             begin=\"" + arr[0] * (1000/speed) + "ms\" dur=\""
-                  + (arr[8] - arr[0]) * (1000/speed)
+                  + "             begin=\"" + arr[0] * (1000 / speed) + "ms\" dur=\""
+                  + (arr[8] - arr[0]) * (1000 / speed)
                   + "ms\" fill=\"freeze\" from=\"" + arr[1] + "\" to=\"" + arr[9] + "\" />\n");
           str.append("<animate attributeName=\"cy\" attributeType=\"XML\"\n"
-                  + "             begin=\"" + arr[0] * (1000/speed) + "ms\" dur=\""
-                  + (arr[8] - arr[0]) * (1000/speed)
+                  + "             begin=\"" + arr[0] * (1000 / speed) + "ms\" dur=\""
+                  + (arr[8] - arr[0]) * (1000 / speed)
                   + "ms\" fill=\"freeze\" from=\"" + arr[2] + "\" to=\"" + arr[10] + "\" />\n");
           str.append("<animate attributeName=\"rx\" attributeType=\"XML\"\n"
-                  + "             begin=\"" + arr[0] * (1000/speed) + "ms\" dur=\""
-                  + (arr[8] - arr[0]) * (1000/speed)
+                  + "             begin=\"" + arr[0] * (1000 / speed) + "ms\" dur=\""
+                  + (arr[8] - arr[0]) * (1000 / speed)
                   + "ms\" fill=\"freeze\" from=\"" + arr[3] + "\" to=\"" + arr[11] + "\" />\n");
           str.append("<animate attributeName=\"ry\" attributeType=\"XML\"\n"
-                  + "             begin=\"" + arr[0] * (1000/speed) + "ms\" dur=\""
-                  + (arr[8] - arr[0]) * (1000/speed)
+                  + "             begin=\"" + arr[0] * (1000 / speed) + "ms\" dur=\""
+                  + (arr[8] - arr[0]) * (1000 / speed)
                   + "ms\" fill=\"freeze\" from=\"" + arr[4] + "\" to=\"" + arr[12] + "\" />\n");
-          str.append("<animate attributeName=\"fill\" attributeType=\"CSS\"\n" +
-                  "           from=\"rgb(" + arr[5] + "," + arr[6] + "," + arr[7]
-                  + ")\" to=\"rgb(" + arr[13] + "," + arr[14] + "," + arr[15] + ")\"\n" +
-                  "           begin=\"" + arr[0] * (1000/speed) + "ms\" dur=\""
-                  + (arr[8] - arr[0]) * (1000/speed)
+          str.append("<animate attributeName=\"fill\" attributeType=\"CSS\"\n"
+                  + "           from=\"rgb(" + arr[5] + "," + arr[6] + "," + arr[7]
+                  + ")\" to=\"rgb(" + arr[13] + "," + arr[14] + "," + arr[15] + ")\"\n"
+                  + "           begin=\"" + arr[0] * (1000 / speed) + "ms\" dur=\""
+                  + (arr[8] - arr[0]) * (1000 / speed)
                   + "ms\" fill=\"freeze\" />\n");
           break;
         default:
@@ -153,7 +153,7 @@ public class SVGView extends AbstractTextView {
 
   @Override
   public void execute() {
-    if (out == "System.out") {
+    if (out.equals("System.out")) {
       System.out.println(this.getSVG());
     }
     else {

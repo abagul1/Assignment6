@@ -83,7 +83,7 @@ public interface IElement {
   String getType();
 
   /**
-   * Paint the element onto the given 2D graphics object
+   * Paint the element onto the given 2D graphics object.
    * @param g2d  the 2D graphics object
    */
   void paint(Graphics2D g2d);

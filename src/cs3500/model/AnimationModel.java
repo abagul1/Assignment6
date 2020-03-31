@@ -286,6 +286,7 @@ public class AnimationModel implements IAnimation {
     currentTick++;
   }
 
+
   @Override
   public IElement getElement(String id) {
     try {
@@ -316,12 +317,12 @@ public class AnimationModel implements IAnimation {
   }
 
   @Override
-  public int getX(){
+  public int getX() {
     return leftX;
   }
 
   @Override
-  public int getY(){
+  public int getY() {
     return topY;
   }
 

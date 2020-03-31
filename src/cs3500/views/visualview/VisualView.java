@@ -1,4 +1,5 @@
 package cs3500.views.visualview;
+
 import java.awt.Dimension;
 import java.awt.Rectangle;
 
@@ -15,7 +16,7 @@ import cs3500.ReadOnlyAnimation;
 /**
  * Parent class for visual views and their respective decorator classes.
  */
-public class VisualView extends JFrame implements IView, Scrollable{
+public class VisualView extends JFrame implements IView, Scrollable {
   private ReadOnlyAnimation m;
 
   /**

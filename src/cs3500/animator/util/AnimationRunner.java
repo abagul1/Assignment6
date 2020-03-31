@@ -1,4 +1,5 @@
 package cs3500.animator.util;
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import javax.swing.Timer;
@@ -25,27 +26,27 @@ public final class AnimationRunner {
     int tempo;
 
     for (int i = 0; i < args.length - 1; i++)  {
-        switch (args[i]) {
-          case "-in":
-            inputFileName = args[i + 1];
-            i++;
-            break;
-          case "-out":
-            outputFileName = args[i + 1];
-            i++;
-            break;
-          case "-view":
-            viewType = args[i + 1];
-            i++;
-            break;
-          case "-speed":
-            speed = args[i + 1];
-            i++;
-            break;
-          default:
-            throw new IllegalStateException("Invalid argument");
-        }
+      switch (args[i]) {
+        case "-in":
+          inputFileName = args[i + 1];
+          i++;
+          break;
+        case "-out":
+          outputFileName = args[i + 1];
+          i++;
+          break;
+        case "-view":
+          viewType = args[i + 1];
+          i++;
+          break;
+        case "-speed":
+          speed = args[i + 1];
+          i++;
+          break;
+        default:
+          throw new IllegalStateException("Invalid argument");
       }
+    }
 
     try {
       tempo = Integer.parseInt(speed);

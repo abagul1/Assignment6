@@ -12,8 +12,7 @@ import cs3500.views.AbstractTextView;
 public class TextView extends AbstractTextView {
 
   private String out;
-  private String fileContent;
-  private FileWriter fileWriter;
+
 
   /**
    * Constructor for the text view.
@@ -27,10 +26,9 @@ public class TextView extends AbstractTextView {
 
   @Override
   public void execute() {
-    fileContent = super.getVerboseAnimation();
     try {
-      fileWriter = new FileWriter(out);
-      fileWriter.write(fileContent);
+      FileWriter fileWriter = new FileWriter(out);
+      fileWriter.write(super.getVerboseAnimation());
       fileWriter.close();
     }
     catch (IOException e) {
